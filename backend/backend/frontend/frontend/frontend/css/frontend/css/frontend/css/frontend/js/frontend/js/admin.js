@@ -165,4 +165,78 @@ function exportChats(format) {
     .then(data => {
         if (format === 'csv') {
             // دانلود CSV
-            const blob = new Blob([data], { type: 'text/csv;chars
+            const blob = new Blob([data], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = `chats_export_${new Date().toISOString().slice(0,10)}.csv`;
+            link.click();
+            showMessage('✅ فایل CSV دانلود شد', 'success');
+        } else if (format === 'json') {
+            // دانلود JSON
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json;charset=utf-8;' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = `chats_export_${new Date().toISOString().slice(0,10)}.json`;
+            link.click();
+            showMessage('✅ فایل JSON دانلود شد', 'success');
+        } else if (format === 'excel') {
+            // خروجی Excel با استفاده از کتابخانه ساده
+            const headers = ['نام', 'شماره', 'پیام', 'پاسخ', 'زمان'];
+            let csv = headers.join(',') + '\n';
+            data.forEach(row => {
+                csv += Object.values(row).map(v => `"${v}"`).join(',') + '\n';
+            });
+            const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = `chats_export_${new Date().toISOString().slice(0,10)}.xls`;
+            link.click();
+            showMessage('✅ فایل Excel دانلود شد', 'success');
+        }
+    })
+    .catch(error => {
+        showMessage('❌ خطا در خروجی: ' + error.message, 'error');
+    });
+}
+
+// ============ خروج از پنل ============
+function logout() {
+    if (confirm('آیا مطمئن هستید که می‌خواهید خارج شوید؟')) {
+        window.location.href = '/';
+    }
+}
+
+// ============ توابع کمکی ============
+function escapeHtml(text) {
+    if (!text) return '';
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+function showMessage(message, type = 'info') {
+    const msgDiv = document.getElementById('saveMessage');
+    if (!msgDiv) return;
+    
+    msgDiv.textContent = message;
+    msgDiv.className = `save-message ${type}`;
+    
+    clearTimeout(msgDiv._timeout);
+    msgDiv._timeout = setTimeout(() => {
+        msgDiv.style.display = 'none';
+    }, 5000);
+    
+    msgDiv.style.display = 'block';
+}
+
+// ============ فیلتر چت‌ها (با تاخیر) ============
+let searchTimeout;
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('searchChat');
+    if (searchInput) {
+        searchInput.addEventListener('input', function() {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => loadChats(), 500);
+        });
+    }
+});
