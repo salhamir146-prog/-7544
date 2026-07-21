@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پنل مدیریت آوای یقین</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/glassmorphism.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚙️</text></svg>">
+</head>
+<body>
+    <div class="admin-panel">
+        <div class="glass-container admin-glass">
+            <div class="admin-header">
+                <div>
+                    <h2>⚙️ پنل مدیریت</h2>
+                    <span style="color: rgba(255,255,255,0.3); font-size: 12px;">آوای یقین</span>
+                </div>
+                <div class="admin-actions">
+                    <span class="admin-status" id="adminStatus">● آنلاین</span>
+                    <button onclick="logout()" class="logout-btn">🚪 خروج</button>
+                </div>
+            </div>
+            
+            <div class="admin-tabs">
+                <button class="tab-btn active" data-tab="settings">⚙️ تنظیمات</button>
+                <button class="tab-btn" data-tab="chats">💬 چت‌ها</button>
+                <button class="tab-btn" data-tab="stats">📊 آمار</button>
+                <button class="tab-btn" data-tab="export">📤 خروجی</button>
+            </div>
+            
+            <!-- تنظیمات -->
+            <div id="settings" class="tab-content active">
+                <div class="setting-group">
+                    <label>🌟 نام ربات</label>
+                    <input type="text" id="botName" class="glass-input" placeholder="نام ربات را وارد کنید">
+                </div>
+                <div class="setting-group">
+                    <label>🧠 شخصیت ربات</label>
+                    <textarea id="botPersonality" class="glass-input" rows="3" placeholder="شخصیت ربات را تعیین کنید"></textarea>
+                </div>
+                <div class="setting-group">
+                    <label>💬 پیام خوش‌آمدگویی</label>
+                    <input type="text" id="botWelcome" class="glass-input" placeholder="پیام خوش‌آمدگویی">
+                </div>
+                <div class="setting-group">
+                    <label>📝 پرامپت سیستم</label>
+                    <textarea id="botSystemPrompt" class="glass-input" rows="4" placeholder="دستورالعمل سیستم برای AI"></textarea>
+                </div>
+                <div class="setting-group row">
+                    <div class="col">
+                        <label>🌡️ دمای پاسخ (0-1)</label>
+                        <input type="number" id="botTemperature" class="glass-input" step="0.1" min="0" max="1" value="0.7">
+                    </div>
+                    <div class="col">
+                        <label>📏 حداکثر توکن</label>
+                        <input type="number" id="botMaxTokens" class="glass-input" step="256" min="256" max="4096" value="2048">
+                    </div>
+                </div>
+                <button class="btn-primary" onclick="saveSettings()">💾 ذخیره تنظیمات</button>
+                <div id="saveMessage" class="save-message"></div>
+            </div>
+            
+            <!-- چت‌ها -->
+            <div id="chats" class="tab-content">
+                <div class="chat-filters">
+                    <input type="text" id="searchChat" placeholder="🔍 جستجو در چت‌ها..." oninput="loadChats()">
+                    <button onclick="loadChats()" class="btn-small">🔄</button>
+                </div>
+                <div class="chat-list" id="chatList">
+                    <div class="loading">⏳ در حال بارگذاری...</div>
+                </div>
+            </div>
+            
+            <!-- آمار -->
+            <div id="stats" class="tab-content">
+                <div class="stats-grid" id="statsGrid">
+                    <div class="stat-card">
+                        <div class="stat-icon">👥</div>
+                        <h3>کاربران</h3>
+                        <p id="totalUsers">۰</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">💬</div>
+                        <h3>پیام‌ها</h3>
+                        <p id="totalMessages">۰</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📅</div>
+                        <h3>چت امروز</h3>
+                        <p id="todayChats">۰</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🟢</div>
+                        <h3>آنلاین</h3>
+                        <p id="onlineUsers">۰</p>
+                    </div>
+                </div>
+                <button onclick="refreshStats()" class="btn-small" style="margin-top:15px;">🔄 بروزرسانی آمار</button>
+            </div>
+            
+            <!-- خروجی -->
+            <div id="export" class="tab-content">
+                <div class="export-options">
+                    <button class="btn-primary" onclick="exportChats('json')">📥 خروجی JSON</button>
+                    <button class="btn-primary" onclick="exportChats('csv')">📥 خروجی CSV</button>
+                    <button class="btn-primary" onclick="exportChats('excel')">📊 خروجی Excel</button>
+                </div>
+                <div style="margin-top:20px; color: rgba(255,255,255,0.3); font-size:13px;">
+                    ℹ️ تمام چت‌ها با فرمت انتخاب شده دانلود می‌شوند
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/admin.js"></script>
+</body>
+</html>
