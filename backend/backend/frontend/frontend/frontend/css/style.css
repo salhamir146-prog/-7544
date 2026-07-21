@@ -148,4 +148,176 @@ body::after {
 }
 
 .message.ai .message-avatar {
-    background: linear-gradient(135deg, rgba(201, 168, 76, 0.3), rgba(201, 168, 76, 0
+    background: linear-gradient(135deg, rgba(201, 168, 76, 0.3), rgba(201, 168, 76, 0.1));
+}
+
+.message.user .message-avatar {
+    background: linear-gradient(135deg, rgba(100, 100, 255, 0.3), rgba(100, 100, 255, 0.1));
+}
+
+.message-content {
+    padding: 12px 18px;
+    border-radius: 16px;
+    max-width: 80%;
+    line-height: 1.8;
+    font-size: 15px;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+}
+
+.message.ai .message-content {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    color: #f0e6d3;
+}
+
+.message.user .message-content {
+    background: linear-gradient(135deg, rgba(201, 168, 76, 0.2), rgba(201, 168, 76, 0.05));
+    border: 1px solid rgba(201, 168, 76, 0.15);
+    color: #f0e6d3;
+}
+
+/* ورودی چت */
+.chat-input {
+    display: flex;
+    gap: 10px;
+    padding: 12px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 14px 18px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 14px;
+    color: #f0e6d3;
+    font-size: 15px;
+    outline: none;
+    transition: all 0.3s;
+}
+
+.chat-input input:focus {
+    border-color: #C9A84C;
+    box-shadow: 0 0 30px rgba(201, 168, 76, 0.05);
+}
+
+.chat-input input::placeholder {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chat-input button {
+    padding: 14px 20px;
+    background: linear-gradient(135deg, #C9A84C, #b8923a);
+    border: none;
+    border-radius: 14px;
+    color: #1a1a2e;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.chat-input button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 30px rgba(201, 168, 76, 0.3);
+}
+
+.chat-input button:active {
+    transform: scale(0.95);
+}
+
+/* تایپ ایندیکیتور */
+.typing-indicator {
+    display: none;
+    padding: 10px 0;
+    gap: 6px;
+    align-items: center;
+}
+
+.typing-indicator.active {
+    display: flex;
+}
+
+.typing-indicator span {
+    width: 8px;
+    height: 8px;
+    background: rgba(201, 168, 76, 0.5);
+    border-radius: 50%;
+    animation: typing 1.4s infinite;
+}
+
+.typing-indicator span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes typing {
+    0%, 60%, 100% { transform: translateY(0); opacity: 0.3; }
+    30% { transform: translateY(-8px); opacity: 1; }
+}
+
+/* تنظیمات فرم */
+.setting-group.row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.btn-small {
+    padding: 8px 16px;
+    background: rgba(201, 168, 76, 0.15);
+    border: 1px solid rgba(201, 168, 76, 0.2);
+    border-radius: 10px;
+    color: #C9A84C;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 13px;
+}
+
+.btn-small:hover {
+    background: rgba(201, 168, 76, 0.25);
+}
+
+.admin-login-hint {
+    text-align: center;
+    margin-top: 15px;
+    color: rgba(255, 255, 255, 0.15);
+    font-size: 12px;
+}
+
+/* ریسپانسیو */
+@media (max-width: 576px) {
+    .glass-container {
+        padding: 25px 18px;
+    }
+    
+    .mosque-header h1 {
+        font-size: 24px;
+    }
+    
+    .message-content {
+        max-width: 90%;
+        font-size: 14px;
+        padding: 10px 14px;
+    }
+    
+    .chat-messages {
+        height: 320px;
+    }
+    
+    .setting-group.row {
+        grid-template-columns: 1fr;
+    }
+    
+    .admin-tabs {
+        gap: 4px;
+    }
+    
+    .tab-btn {
+        padding: 8px 14px;
+        font-size: 12px;
+    }
+}
