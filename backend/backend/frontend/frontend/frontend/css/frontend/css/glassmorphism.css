@@ -1,0 +1,199 @@
+:root {
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-shadow: 0 8px 40px 0 rgba(0, 0, 0, 0.5);
+    --primary-gold: #C9A84C;
+    --primary-gold-dark: #b8923a;
+    --primary-gold-light: #e8d5a3;
+    --text-light: #f0e6d3;
+}
+
+.glass-container {
+    background: var(--glass-bg);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid var(--glass-border);
+    border-radius: 28px;
+    box-shadow: var(--glass-shadow);
+    padding: 35px 30px;
+    position: relative;
+    z-index: 1;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-container::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    border-radius: 28px;
+    background: linear-gradient(135deg, rgba(201, 168, 76, 0.1), transparent, rgba(201, 168, 76, 0.05));
+    z-index: -1;
+    opacity: 0.5;
+}
+
+.glass-container:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 50px 0 rgba(201, 168, 76, 0.08);
+}
+
+/* هدر مسجد */
+.mosque-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.mosque-header .logo {
+    font-size: 56px;
+    margin-bottom: 8px;
+    display: inline-block;
+    animation: float 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 30px rgba(201, 168, 76, 0.1));
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-12px) scale(1.05); }
+}
+
+.mosque-header h1 {
+    color: var(--primary-gold);
+    font-size: 32px;
+    font-weight: 800;
+    text-shadow: 0 0 50px rgba(201, 168, 76, 0.15);
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.mosque-header .subtitle {
+    color: var(--text-light);
+    opacity: 0.4;
+    font-size: 14px;
+    margin-top: 6px;
+    letter-spacing: 2px;
+}
+
+/* فرم ورود */
+.auth-form input {
+    width: 100%;
+    padding: 16px 20px;
+    margin: 8px 0;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 14px;
+    color: var(--text-light);
+    font-size: 15px;
+    transition: all 0.3s;
+    outline: none;
+    direction: rtl;
+}
+
+.auth-form input:focus {
+    border-color: var(--primary-gold);
+    box-shadow: 0 0 35px rgba(201, 168, 76, 0.06);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.auth-form input::placeholder {
+    color: rgba(255, 255, 255, 0.15);
+}
+
+/* دکمه اصلی */
+.btn-primary {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, var(--primary-gold), var(--primary-gold-dark));
+    border: none;
+    border-radius: 14px;
+    color: #1a1a2e;
+    font-size: 17px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 12px;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn-primary:hover::after {
+    left: 100%;
+}
+
+.btn-primary:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 40px rgba(201, 168, 76, 0.3);
+}
+
+.btn-primary:active {
+    transform: scale(0.97);
+}
+
+/* المان‌های مناره */
+.minaret {
+    position: fixed;
+    width: 5px;
+    background: linear-gradient(to top, rgba(201, 168, 76, 0.12), transparent);
+    border-radius: 3px 3px 0 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.minaret::after {
+    content: '🌙';
+    position: absolute;
+    top: -26px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 22px;
+    opacity: 0.4;
+}
+
+/* شیشه ورودی‌ها در ادمین */
+.glass-input {
+    width: 100%;
+    padding: 14px 18px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    color: var(--text-light);
+    font-size: 15px;
+    outline: none;
+    transition: all 0.3s;
+    font-family: inherit;
+}
+
+.glass-input:focus {
+    border-color: var(--primary-gold);
+    box-shadow: 0 0 30px rgba(201, 168, 76, 0.05);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.glass-input::placeholder {
+    color: rgba(255, 255, 255, 0.15);
+}
+
+.glass-input textarea {
+    resize: vertical;
+    min-height: 80px;
+    font-family: inherit;
+}
+
+/* انیمیشن‌ها */
+@keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+}
