@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>آوای یقین - دستیار دینی هوشمند</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/glassmorphism.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕌</text></svg>">
+</head>
+<body>
+    <div class="minaret" style="left: 3%; height: 250px;"></div>
+    <div class="minaret" style="right: 3%; height: 280px;"></div>
+    <div class="minaret" style="left: 50%; transform: translateX(-50%); height: 320px;"></div>
+    
+    <div class="container" id="app">
+        <div class="glass-container" id="loginContainer">
+            <div class="mosque-header">
+                <div class="logo">🕌</div>
+                <h1>آوای یقین</h1>
+                <p class="subtitle">✨ دستیار هوشمند دینی</p>
+            </div>
+            
+            <div id="loginForm" class="auth-form">
+                <input type="text" id="userName" placeholder="نام و نام خانوادگی" required>
+                <input type="tel" id="userPhone" placeholder="شماره تلفن (0912...)" required>
+                <button class="btn-primary" onclick="loginUser()">
+                    🌙 ورود به آوای یقین
+                </button>
+                <div class="admin-login-hint">
+                    <small>🔑 ورود ادمین: شماره مخصوص را وارد کنید</small>
+                </div>
+            </div>
+            
+            <div id="chatInterface" class="chat-interface" style="display: none;">
+                <div class="chat-header">
+                    <div class="chat-title">
+                        <span>🕌</span>
+                        <h3 id="botName">آوای یقین</h3>
+                    </div>
+                    <div class="chat-status">
+                        <span class="status-dot"></span>
+                        آنلاین
+                    </div>
+                </div>
+                
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message ai">
+                        <div class="message-avatar">🤖</div>
+                        <div class="message-content">
+                            🌙 سلام! من آوای یقین هستم. در مسیر ایمان و یقین همراهتان هستم. چه سوالی دارید؟
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="typing-indicator" id="typingIndicator">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                
+                <div class="chat-input">
+                    <input type="text" id="userInput" placeholder="سوال خود را مطرح کنید..." 
+                           onkeypress="if(event.key==='Enter') sendMessage()">
+                    <button onclick="sendMessage()" id="sendBtn">📤</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>
