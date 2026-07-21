@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>آوای یقین - دستیار دینی هوشمند</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3e 30%, #2d1b4e 60%, #1a1a3e 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Vazir', 'IRANSans', 'Tahoma', sans-serif;
+            direction: rtl;
+        }
+        .container {
+            text-align: center;
+            padding: 40px;
+            max-width: 500px;
+        }
+        .logo {
+            font-size: 80px;
+            animation: float 3s ease-in-out infinite;
+            display: block;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-15px) scale(1.05); }
+        }
+        h1 {
+            color: #C9A84C;
+            font-size: 38px;
+            margin: 20px 0 10px;
+            text-shadow: 0 0 50px rgba(201, 168, 76, 0.2);
+            letter-spacing: 2px;
+        }
+        .subtitle {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 16px;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+        .btn-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .btn {
+            display: block;
+            padding: 16px 30px;
+            background: linear-gradient(135deg, #C9A84C, #b8923a);
+            color: #1a1a2e;
+            text-decoration: none;
+            border-radius: 14px;
+            font-weight: 700;
+            font-size: 17px;
+            transition: all 0.3s;
+            text-align: center;
+        }
+        .btn:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 40px rgba(201, 168, 76, 0.3);
+        }
+        .btn-admin {
+            background: rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            font-size: 14px;
+        }
+        .btn-admin:hover {
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: none;
+        }
+        .features {
+            margin-top: 30px;
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 12px;
+            line-height: 2;
+        }
+        .features span {
+            margin: 0 8px;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 28px;
+            padding: 40px 30px;
+        }
+        @media (max-width: 576px) {
+            .logo { font-size: 60px; }
+            h1 { font-size: 28px; }
+            .glass { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="glass">
+            <span class="logo">🕌</span>
+            <h1>آوای یقین</h1>
+            <p class="subtitle">✨ دستیار هوشمند دینی</p>
+            
+            <div class="btn-container">
+                <a href="/-7544/frontend/" class="btn">🌙 ورود به آوای یقین</a>
+                <a href="/-7544/frontend/admin.html" class="btn btn-admin">⚙️ پنل مدیریت</a>
+            </div>
+            
+            <div class="features">
+                <span>🤖 پاسخ‌های هوشمند</span>
+                <span>•</span>
+                <span>🕌 طراحی مسجدی</span>
+                <span>•</span>
+                <span>💬 ذخیره‌سازی چت‌ها</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
