@@ -1,0 +1,348 @@
+.admin-panel {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.admin-glass {
+    padding: 30px;
+    max-width: 100%;
+}
+
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.admin-header h2 {
+    color: #C9A84C;
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.admin-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.admin-status {
+    color: #4CAF50;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.admin-status::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #4CAF50;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+.logout-btn {
+    background: rgba(255, 0, 0, 0.08);
+    border: 1px solid rgba(255, 0, 0, 0.15);
+    color: #ff6b6b;
+    padding: 8px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 13px;
+}
+
+.logout-btn:hover {
+    background: rgba(255, 0, 0, 0.15);
+    transform: scale(1.05);
+}
+
+/* تب‌ها */
+.admin-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.tab-btn {
+    padding: 10px 22px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 12px;
+    color: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.tab-btn:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.tab-btn.active {
+    background: rgba(201, 168, 76, 0.12);
+    border-color: rgba(201, 168, 76, 0.2);
+    color: #C9A84C;
+}
+
+/* محتوای تب */
+.tab-content {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* گروه تنظیمات */
+.setting-group {
+    margin-bottom: 18px;
+}
+
+.setting-group label {
+    display: block;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 13px;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+.setting-group textarea.glass-input {
+    min-height: 80px;
+    resize: vertical;
+}
+
+.setting-group.row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+/* پیغام ذخیره */
+.save-message {
+    margin-top: 12px;
+    padding: 12px;
+    border-radius: 10px;
+    text-align: center;
+    display: none;
+    font-size: 14px;
+}
+
+.save-message.success {
+    display: block;
+    background: rgba(76, 175, 80, 0.1);
+    color: #4CAF50;
+    border: 1px solid rgba(76, 175, 80, 0.15);
+}
+
+.save-message.error {
+    display: block;
+    background: rgba(255, 0, 0, 0.1);
+    color: #ff6b6b;
+    border: 1px solid rgba(255, 0, 0, 0.15);
+}
+
+/* لیست چت‌ها */
+.chat-filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.chat-filters input {
+    flex: 1;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 10px;
+    color: #f0e6d3;
+    outline: none;
+    font-size: 14px;
+}
+
+.chat-filters input:focus {
+    border-color: rgba(201, 168, 76, 0.3);
+}
+
+.chat-list {
+    max-height: 450px;
+    overflow-y: auto;
+}
+
+.chat-item {
+    padding: 15px;
+    margin-bottom: 10px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    transition: all 0.3s;
+}
+
+.chat-item:hover {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.chat-item .chat-user {
+    color: #C9A84C;
+    font-weight: 600;
+    margin-bottom: 4px;
+    font-size: 14px;
+}
+
+.chat-item .chat-user small {
+    color: rgba(255, 255, 255, 0.2);
+    font-weight: 400;
+    margin-right: 10px;
+}
+
+.chat-item .chat-message {
+    color: rgba(255, 255, 255, 0.7);
+    margin: 4px 0;
+    font-size: 14px;
+}
+
+.chat-item .chat-response {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 13px;
+    padding-right: 12px;
+    border-right: 2px solid rgba(201, 168, 76, 0.2);
+    margin-top: 4px;
+}
+
+.chat-item .chat-time {
+    color: rgba(255, 255, 255, 0.15);
+    font-size: 11px;
+    margin-top: 6px;
+}
+
+.loading {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.2);
+    padding: 30px;
+    font-size: 14px;
+}
+
+/* آمار */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 15px;
+}
+
+.stat-card {
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    text-align: center;
+    transition: all 0.3s;
+}
+
+.stat-card:hover {
+    background: rgba(255, 255, 255, 0.04);
+    transform: translateY(-2px);
+}
+
+.stat-card .stat-icon {
+    font-size: 32px;
+    margin-bottom: 6px;
+}
+
+.stat-card h3 {
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 12px;
+    font-weight: 400;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.stat-card p {
+    color: #C9A84C;
+    font-size: 28px;
+    font-weight: 700;
+    margin: 6px 0 0 0;
+}
+
+/* خروجی */
+.export-options {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.export-options .btn-primary {
+    width: auto;
+    padding: 14px 30px;
+    flex: 1;
+    min-width: 150px;
+}
+
+/* ریسپانسیو */
+@media (max-width: 768px) {
+    .admin-glass {
+        padding: 20px;
+    }
+    
+    .admin-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .admin-header h2 {
+        font-size: 18px;
+    }
+    
+    .admin-tabs {
+        gap: 4px;
+    }
+    
+    .tab-btn {
+        padding: 8px 14px;
+        font-size: 12px;
+        flex: 1;
+        text-align: center;
+        min-width: 60px;
+    }
+    
+    .setting-group.row {
+        grid-template-columns: 1fr;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .export-options .btn-primary {
+        min-width: 100%;
+    }
+    
+    .chat-item {
+        padding: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
